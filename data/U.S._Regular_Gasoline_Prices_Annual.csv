@@ -1,8 +1,4 @@
-U.S. Regular All Formulations Retail Gasoline Prices Annual
-https://www.eia.gov/opendata/qb.php?sdid=PET.EMM_EPMR_PTE_NUS_DPG.A
-10:12:31 GMT-0800 (Pacific Standard Time)
-Source: U.S. Energy Information Administration
-Year,Series ID: PET.EMM_EPMR_PTE_NUS_DPG.A Dollars per Gallon
+year,price
 2019,2.604
 2018,2.719
 2017,2.415
