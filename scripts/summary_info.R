@@ -8,7 +8,6 @@ car_sales <- read.csv("../data/US_Vehicle_Sales_Monthly.csv",
                       stringsAsFactors = FALSE)
 car_sales <- car_sales %>% gather(key = month, value = volume, -year)
 
-
 # following lines modify chart so data can be accessed easier
 us_reg_gas_prices <- read.csv("../data/U.S._Regular_Gasoline_Prices_Monthly.csv",
                               stringsAsFactors = FALSE)
@@ -20,8 +19,7 @@ us_reg_gas_prices$year <- str_pad(us_reg_gas_prices$year,
                                   pad="0")
 us_reg_gas_prices$year <- paste0(20, us_reg_gas_prices$year)
 
-
-
+# summary for car sales df
 get_df_summary1 <- function(df) {
   output <- list()
   output$num_columns <- length(df)
@@ -57,6 +55,7 @@ get_df_summary1 <- function(df) {
 } 
 test_summary1 <- get_df_summary1(car_sales)
 
+# summary for gas price df
 get_df_summary2 <- function(df) {
   output <- list()
   output$num_columns <- length(df)
