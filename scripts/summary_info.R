@@ -2,7 +2,6 @@ library("dplyr")
 library("tidyr")
 library("stringr")
 
-
 # following lines rearrange chart for better organization and access
 car_sales <- read.csv("../data/US_Vehicle_Sales_Monthly.csv",
                       stringsAsFactors = FALSE)
@@ -53,8 +52,6 @@ get_df_summary1 <- function(df) {
     pull(year)
   output
 } 
-test_summary1 <- get_df_summary1(car_sales)
-
 # summary for gas price df
 get_df_summary2 <- function(df) {
   output <- list()
@@ -77,6 +74,14 @@ get_df_summary2 <- function(df) {
   output$year_highest_price <- us_reg_gas_prices %>% 
     filter(price == max(price)) %>% 
     pull(year)
+  output$num_lowest_price <- df %>% 
+    filter(price == min(price)) %>% 
+    pull(price)
+  output$month_lowest_price <- us_reg_gas_prices %>% 
+    filter(price == min(price)) %>% 
+    pull(month)
+  output$year_lowest_price <- us_reg_gas_prices %>% 
+    filter(price == min(price)) %>% 
+    pull(year)
   output
 }
-test_summary2 <- get_df_summary2(us_reg_gas_prices)
