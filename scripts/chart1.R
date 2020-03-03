@@ -25,3 +25,4 @@ get_reg_gas_chart <- function(){
   return(reg_chart)
 }
 
+
