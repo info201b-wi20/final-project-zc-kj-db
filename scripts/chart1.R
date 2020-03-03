@@ -2,7 +2,7 @@
 library(plotly)
 
 get_reg_gas_chart <- function(){
-  us_reg_gas_prices <- read.csv("../data/U.S._Regular_Gasoline_Prices_Annual.csv",
+  us_reg_gas_prices <- read.csv("data/U.S._Regular_Gasoline_Prices_Annual.csv",
                                 stringsAsFactors = FALSE)
   
   
@@ -19,7 +19,7 @@ get_reg_gas_chart <- function(){
     layout(
       title = "Regular Gas Prices Through the Years",                  # plot title
       xaxis = list(title = "year"), # axis label + format
-      yaxis = list(title = "Price", ticksuffix = "$")  # axis label + format
+      yaxis = list(title = "Price", tickprefix = "$")  # axis label + format
     )
   # returns the completed chart
   return(reg_chart)

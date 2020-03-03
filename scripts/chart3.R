@@ -2,7 +2,7 @@ library(plotly)
 
 get_prem_gas_chart <- function() {
   us_prem_gas_prices <- read.csv(
-    "../data/U.S._Premium_Gasoline_Prices_Annual.csv",
+    "data/U.S._Premium_Gasoline_Prices_Annual.csv",
     stringsAsFactors = FALSE
   )
 
@@ -20,7 +20,7 @@ get_prem_gas_chart <- function() {
     layout(
       title = "Premium Gas Prices Through the Years", # plot title
       xaxis = list(title = "year"), # axis label + format
-      yaxis = list(title = "Price", ticksuffix = "$") # axis label + format
+      yaxis = list(title = "Price", tickprefix = "$") # axis label + format
     )
   return(prem_chart)
 }

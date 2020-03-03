@@ -4,7 +4,7 @@ get_mid_gas_chart <- function() {
 
   # Pull the data from our csv and convert it into a dataframe
   us_mid_gas_prices <- read.csv(
-    "../data/U.S._Midgrade_Gasoline_Prices_Annual.csv",
+    "data/U.S._Midgrade_Gasoline_Prices_Annual.csv",
     stringsAsFactors = FALSE
   )
 
@@ -20,7 +20,7 @@ get_mid_gas_chart <- function() {
     layout(
       title = "Midgrade Gas Prices Through the Years", # plot title
       xaxis = list(title = "year"), # axis label + format
-      yaxis = list(title = "Price", ticksuffix = "$") # axis label + format
+      yaxis = list(title = "Price", tickprefix = "$") # axis label + format
     )
 
   return(mid_chart)

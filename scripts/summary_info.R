@@ -3,12 +3,12 @@ library("tidyr")
 library("stringr")
 
 # following lines rearrange chart for better organization and access
-car_sales <- read.csv("../data/US_Vehicle_Sales_Monthly.csv",
+car_sales <- read.csv("data/US_Vehicle_Sales_Monthly.csv",
                       stringsAsFactors = FALSE)
 car_sales <- car_sales %>% gather(key = month, value = volume, -year)
 
 # following lines modify chart so data can be accessed easier
-us_reg_gas_prices <- read.csv("../data/U.S._Regular_Gasoline_Prices_Monthly.csv",
+us_reg_gas_prices <- read.csv("data/U.S._Regular_Gasoline_Prices_Monthly.csv",
                               stringsAsFactors = FALSE)
 us_reg_gas_prices <- us_reg_gas_prices %>% 
   separate(date, sep = "-", into = c("year", "month"))
@@ -85,3 +85,4 @@ get_df_summary2 <- function(df) {
     pull(year)
   output
 }
+output2 <- get_df_summary2(us_reg_gas_prices) 

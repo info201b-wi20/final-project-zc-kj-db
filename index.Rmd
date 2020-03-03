@@ -1,14 +1,17 @@
 ---
-title: "Car sales compared to Gas Prices in the United States"
+title: "Car Sales compared to Gas Prices in the United States"
 author: "Kylie Jones, Zach Casler, Dana Brooks"
 date: "3/2/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-source("chart1.R")
-source("chart2.R")
-source("chart3.R")
+```{r setup, include = FALSE}
+source("scripts/chart1.R")
+source("scripts/chart2.R")
+source("scripts/chart3.R")
+source("scripts/chart4.R")
+source("scripts/summary_info.R")
+source("scripts/summary_table.R")
 library(knitr)
 ```
 
@@ -28,20 +31,29 @@ markdown_list <- "
 
 Our data is sourced from _the US Energy Information Administration_ and _Goodcarbadcar.net_. The US Energy Information Administration collected the gasoline price data as monthly and annual averages are simple averages of the weekly data contained therein. Goodcarbadcar.net compiled data on United States Automotive sales since 2005 broken out by month. This is on a unit basis. This is new vehicle sales in the US since 2005, including passenger cars, commercial vans and light trucks. Goodcarbadcar.net is sourced from the U.S. Bureau of Economic Analysis. Our data has 15 to 30 obersvations (depending on the amount of years the separate datasets have), and 12 features (one per month.)
 
+***
+
 ## Summary Information
 
-Regular gas prices reached its peak in `month_higest_price` `year_highest_price` at the price of `num_highest_price` per gallon. Surprisingly, regular gas prices hit it's lowest point in our data set in the same year. in `month_lowest_price` `year_lowest_price`, the average cost of regular gas was `num_lowest_price`per gallon.
+Regular gas prices reached its peak in `r output2$month_highest_price` `r output2$year_highest_price` at the price of \$`r output2$num_highest_price` per gallon. Surprisingly, regular gas prices hit it's lowest point in our data set in the same year. in `r output2$month_lowest_price` `r output2$year_lowest_price`, the average cost of regular gas was \$`r output2$num_lowest_price` per gallon.
+
+***
 
 ## Aggregate Table
+This table is sorted by year oldest to most recent and it contains various information since 2005.
+`r kable(get_aggregate_table())`
+
+***
 
 ## Charts
 `r get_reg_gas_chart()`
-This chart shows the yearly average price of regular gas in the US since 2005. 
+This chart above shows the yearly average price of regular gas in the US since 2005. 
 
 `r get_mid_gas_chart()`
-This chart shows the yearly average price of midgrade gas in the US since 2005.
+This chart above shows the yearly average price of midgrade gas in the US since 2005.
 
 `r get_prem_gas_chart()`
-This chart shows the yearly average price of premium gas in the US since 2005.
+This chart above shows the yearly average price of premium gas in the US since 2005.
 
-
+`r get_car_sales_chart()`
+This chart above shows the yearly car sales volume in the US since 2005.
