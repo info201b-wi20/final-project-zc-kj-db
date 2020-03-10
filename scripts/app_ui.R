@@ -18,6 +18,7 @@ home_page <- tabPanel(
     tags$li("Do the gas prices reflect a balance on car sales")
   ),
   mainPanel(
+    tags$hr(),
     h1("About our Data"),
     p("Our data is sourced from the US Energy Information Administration
       and Goodcarbadcar.net. The EIA collected the gasoline price data
