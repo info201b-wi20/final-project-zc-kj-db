@@ -1,6 +1,7 @@
 library(shiny)
-library(shiny)
+library(ggplot2)
 library(plotly)
+library(shinythemes)
 
 #Creates the homepage
 home_page <- tabPanel(
@@ -8,43 +9,58 @@ home_page <- tabPanel(
   titlePanel('Overview'),
   mainPanel(
     h1('Main Research Question'),
-    p("body text goes here")
+    tags$h4("What is the relationship between gas prices and car sales?")
   ),
   mainPanel(
+    tags$hr(),
     h1('Additional Research Questions'),
-    p("body text here")
+    tags$li("Which months have the best car sales?"),
+    tags$li("Do the gas prices reflect a balance on car sales")
   ),
   mainPanel(
+    h1("About our Data"),
+    p("Our data is sourced from the US Energy Information Administration
+      and Goodcarbadcar.net. The EIA collected the gasoline price data
+      as monthly and annual averages and are simple averages of the
+      weekly data contained therein. Goodcarbadcar.net compiled 
+      data on US Automotive sales since 2005 broken down by month.
+      This is on a unit basis and contains new vehicle sals in the US
+      since 2005. Goodcarbadcar.net is rouced from the US Bureau of Economic
+      Analyis Our data has 15 to 30 observations and 12 features.")
+  ),
+  sidebarPanel(
     h2('Important Links'),
-    p("Link 1"),
-    p("Link 2"),
-    p("Link 3")
+    p(tags$a(href = "https://eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_m.html", " US EIA dataset")),
+    p(tags$a(href = "https://goodcarbadcar.net/usa-auto-industry-total-sales-figures","Goodcarbadcar.net")),
+    p(tags$a(href = 'https://github.com/info201b-wi20/final-project-zc-kj-db/blob/master/README.md', "Project Brainstorm")),
+    p(tags$a(href = "https://info201b-wi20.github.io/final-project-zc-kj-db/index.html", "Midpoint Report")),
+    p(tags$a(href = "https://github.com/info201b-wi20/final-project-zc-kj-db", "Github Repository"))
   )
-)
-
-#Creates the page with our gas chart visualization
-gas_page <- tabPanel(
-  "Gas Prices",
-  titlePanel("Gas Prices Since 2005")
-)
-
-
-#creates our summary table page
-table_page <- tabPanel(
-  "Summary Table",
-  titlePanel("Our Sumamrized Data")
-)
-
-#creates our car sales analysis page
-car_page <- tabPanel(
-  "Car Sales",
-  titlePanel("Car Sales Since 2005")
 )
 
 #Creates the main page with the charts above as subpages
 chart_page <- tabPanel(
   "Visualizations",
-  titlePanel("A Deeper Look at the Data")
+  titlePanel("A Deeper Look at the Data"),
+  tabsetPanel(
+    #creates our summary table page
+    tabPanel(
+      "Summary Table",
+      titlePanel("Our Summarized Data"),
+    ),
+    
+    #creates our car sales analysis page
+    tabPanel(
+      "Car Sales",
+      titlePanel("Car Sales Since 2005")
+    ),
+    
+    #Creates the page with our gas chart visualization
+    tabPanel(
+      "Gas Prices",
+      titlePanel("Gas Prices Since 2005")
+    )
+  )
 )
 
 
@@ -53,7 +69,11 @@ summary_page <- tabPanel(
   "Summary",
   titlePanel("In Conclusion.."),
   mainPanel(
-    p("Summarization goes Here")
+    p('Regular gas prices reached its peak
+      in Jul 2008 at the price of $4.062 per gallon. 
+      Surprisingly, regular gas prices hit its lowest point in our data set 
+      in the same year. in Dec 2008, the average cost of regular gas was $1.687
+      per gallon.')
   )
   
 )
@@ -63,16 +83,17 @@ contact_page <- tabPanel(
   "Contact us",
   titlePanel("Contact Us:"),
   mainPanel(
-    p("Zach Casler:"),
-    p("Kylie Jones:"),
-    p("Dana Brooks:")
+    p("Zach Casler: zcasler@uw.edu"),
+    p("Kylie Jones: jonesk85@uw.edu"),
+    p("Dana Brooks: dabrooks@uw.edu") 
   )
 )
 
 
 
 # Defines the User Interaction
-my_ui <- fluidPage(
+my_ui <- fluidPage( 
+theme = shinytheme("darkly"),
   navbarPage(
     "Project ZKD",
     home_page,
