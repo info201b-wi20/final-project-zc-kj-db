@@ -6,7 +6,7 @@ library(shinythemes)
 #Creates the homepage
 home_page <- tabPanel(
   "Car Sales and Gas Prices",
-  titlePanel('Overview'),
+  titlePanel('Car Sales & Gas Prices Overview'),
   mainPanel(
     h1('Main Research Question'),
     tags$h4("What is the relationship between gas prices and car sales?")
