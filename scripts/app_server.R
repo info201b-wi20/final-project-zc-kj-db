@@ -1,6 +1,8 @@
 source("analysis.R")
 
 my_server <- function(input, output) {
+  
+  #creates our gas price visualization
   output$gas_plot <- renderPlotly({
     plot_ly(
       data = get_df_by_year(reg_data, input$year1),
@@ -27,6 +29,7 @@ my_server <- function(input, output) {
       )
   })
   
+  #Creates our data table visualization
   output$table <- DT::renderDataTable({
     DT::datatable(aggregate_table,
     options = list(lengthMenu = c(10, 25, 50, 100, 200),
@@ -35,6 +38,7 @@ my_server <- function(input, output) {
     )
   })
   
+  #Creates our car sales visualization
   output$sales_plot <- renderPlotly({
     plot_ly(
       data = get_df_by_year(car_sales, input$year2),

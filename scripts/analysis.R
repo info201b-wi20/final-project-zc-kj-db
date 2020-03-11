@@ -74,9 +74,6 @@ get_x_axis <- function(df, selected_year) {
   }
 }
 
-test <- get_x_axis(car_sales, 2018)
-
-
 # makes list of choices by year
 year_choices <- c("All Years", 2005:2019)
 
@@ -84,7 +81,8 @@ year_choices <- c("All Years", 2005:2019)
 
 # sets up car sales df to graph
 car_sales <- read.csv("../data/US_Vehicle_Sales_Monthly.csv",
-                      stringsAsFactors = FALSE)
+                      stringsAsFactors = FALSE,
+                      fileEncoding = "UTF-8-BOM")
 car_sales <- car_sales %>% gather(key = month, value = volume, -year)
 car_sales$x_axis <- as.yearmon(paste(car_sales$month, car_sales$year)) 
 car_sales <- car_sales[order(car_sales$x_axis), ]

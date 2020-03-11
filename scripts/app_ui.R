@@ -114,7 +114,7 @@ contact_page <- tabPanel(
 
 # Defines the User Interaction
 my_ui <- fluidPage( 
-theme = shinytheme("darkly"),
+theme = shinytheme("flatly"),
   navbarPage(
     "Project ZKD",
     home_page,
