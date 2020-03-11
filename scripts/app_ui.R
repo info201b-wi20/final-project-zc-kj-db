@@ -127,7 +127,7 @@ contact_page <- tabPanel(
 my_ui <- fluidPage( 
 theme = shinytheme("flatly"),
   navbarPage(
-    "Project ZKD",
+    "Gas Prices Vs. Car Sales",
     home_page,
     chart_page,
     summary_page,
