@@ -1,34 +1,37 @@
 source("analysis.R")
 
 my_server <- function(input, output) {
-  
+
   #creates our gas price visualization
   output$gas_plot <- renderPlotly({
     plot_ly(
       data = get_df_by_year(reg_data, input$year1),
-      x = ~get_x_axis(reg_data, input$year1), 
+      x = ~get_x_axis(reg_data, input$year1),
       y = ~price,
       hovertemplate = paste("<b>Price</b>: %{y}",
-                            "<br><b>Month</b>: ", 
+                            "<br><b>Month</b>: ",
                             get_df_by_year(reg_data, input$year1)$month,
                             "<br><b>Year</b>: ",
                             get_df_by_year(reg_data, input$year1)$year),
       name = "Regular-Grade",
-      type = "scatter", 
-      mode = "lines"  
+      type = "scatter",
+      mode = "lines"
     ) %>%
-      add_trace(data = get_df_by_year(mid_data, input$year1), y = ~price, name = "Mid-Grade", mode = "lines") %>% 
-      add_trace(data = get_df_by_year(prem_data, input$year1), y = ~price, name = "Premium-Grade", mode = "lines") %>% 
+      add_trace(data = get_df_by_year(mid_data, input$year1),
+                y = ~price, name = "Mid-Grade",
+                mode = "lines") %>%
+      add_trace(data = get_df_by_year(prem_data, input$year1),
+                y = ~price, name = "Premium-Grade",
+                mode = "lines") %>%
       layout(
         title = paste0("U.S. Gas Prices for ", input$year1, " by Month"),
         xaxis = x_axis_order,
         yaxis = list(title = "Price Per Gallon", tickprefix = "$")
-      ) %>% 
+      ) %>%
       layout(
         xaxis = list(title = input$year1)
       )
   })
-  
   #Creates our data table visualization
   output$table <- DT::renderDataTable({
     DT::datatable(aggregate_table,
@@ -37,26 +40,27 @@ my_server <- function(input, output) {
     rownames = FALSE
     )
   })
-  
+
   #Creates our car sales visualization
   output$sales_plot <- renderPlotly({
     plot_ly(
       data = get_df_by_year(car_sales, input$year2),
-      x = ~get_x_axis(car_sales, input$year2), 
+      x = ~get_x_axis(car_sales, input$year2),
       y = ~volume,
       hovertemplate = paste("<b>Sales Volume</b>: %{y}",
-                            "<br><b>Month</b>: ", 
-                            get_df_by_year(car_sales, input$year2)$month, 
+                            "<br><b>Month</b>: ",
+                            get_df_by_year(car_sales, input$year2)$month,
                             "<br><b>Year</b>: ",
                             get_df_by_year(car_sales, input$year2)$year),
-      type = "scatter", 
-      mode = "lines"  
-    ) %>% 
+      type = "scatter",
+      mode = "lines"
+    ) %>%
       layout(
-        title = paste0("U.S. Car Sales Volume for ", input$year2, " by Month"),
+        title = paste0("U.S. Car Sales Volume for ",
+                       input$year2, " by Month"),
         xaxis = list(title = input$year2),
         yaxis = list(title = "Volume of Cars Sold")
-      ) %>% 
+      ) %>%
       layout(
         xaxis = x_axis_order
       )
