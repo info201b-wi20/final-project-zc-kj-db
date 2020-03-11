@@ -90,11 +90,22 @@ summary_page <- tabPanel(
   "Summary",
   titlePanel("In Conclusion.."),
   mainPanel(
-    p('Regular gas prices reached its peak
-      in Jul 2008 at the price of $4.062 per gallon. 
-      Surprisingly, regular gas prices hit its lowest point in our data set 
-      in the same year. in Dec 2008, the average cost of regular gas was $1.687
-      per gallon.')
+    p("For this project, we analyzed the relationship between car sales and gas prices.
+      After analyzing the data, we were able to determine the peaks and valleys within 
+      the United States car sales market, as well as the peaks and valleys in gas prices."),
+    p("We found that in 2008, gas prices were the highest with regular gas prices averaging 
+      at $4.18 in July, whereas car sales were very low, with less than a million car sales 
+      at one point in the year. This is likely due to the United States' economic crash that 
+      occurred in September of 2008. In January of 2009, gas prices were the lowest that they 
+      had been since 2005, with an average price of $1.90 for regular gas; a possible indication
+      of a recovering economy."),
+    p("Overall, there seems to be a correlation between gas prices and car sales, but more research
+      should be conducted to determine whether the price of gas and the sales of cars are caused
+      by one another. From the data we gathered and analyzed, we are able to better understand the
+      fluctuations of the economy and its impact on different markets.")
+    
+    
+    
   )
   
 )
