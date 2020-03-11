@@ -90,11 +90,13 @@ summary_page <- tabPanel(
   "Summary",
   titlePanel("In Conclusion.."),
   mainPanel(
-    p('Regular gas prices reached its peak
+   # p(),
+    p("Regular gas prices reached its peak
       in Jul 2008 at the price of $4.062 per gallon. 
       Surprisingly, regular gas prices hit its lowest point in our data set 
       in the same year. in Dec 2008, the average cost of regular gas was $1.687
-      per gallon.')
+      per gallon.")
+    #p()
   )
   
 )
