@@ -100,6 +100,15 @@ summary_page <- tabPanel(
   "Summary",
   titlePanel("In Conclusion.."),
   mainPanel(
+<<<<<<< HEAD
+   # p(),
+    p("Regular gas prices reached its peak
+      in Jul 2008 at the price of $4.062 per gallon. 
+      Surprisingly, regular gas prices hit its lowest point in our data set 
+      in the same year. in Dec 2008, the average cost of regular gas was $1.687
+      per gallon.")
+    #p()
+=======
     p("For this project, we analyzed the relationship between car sales and
     gas prices. After analyzing the data, we were able to determine the peaks
      and valleys within the United States car sales market, as well as the
@@ -116,6 +125,7 @@ summary_page <- tabPanel(
     price of gas and the sales of cars are caused by one another. From the
     data we gathered and analyzed, we are able to better understand the
       fluctuations of the economy and its impact on different markets.")
+>>>>>>> f708c25b269637fba2f51f55180af34eea73e948
   )
 )
 
