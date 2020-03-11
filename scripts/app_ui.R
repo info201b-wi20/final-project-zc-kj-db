@@ -1,7 +1,5 @@
-library(shiny)
-library(ggplot2)
-library(plotly)
-library(shinythemes)
+library("shinythemes")
+source("analysis.R")
 
 #Creates the homepage
 home_page <- tabPanel(
@@ -44,22 +42,44 @@ chart_page <- tabPanel(
   "Visualizations",
   titlePanel("A Deeper Look at the Data"),
   tabsetPanel(
+    #Creates the page with our gas chart visualization
+    tabPanel(
+      "Gas Prices",
+      sidebarLayout(
+        sidebarPanel(
+          h3("Interactive Control"),
+          selectInput(inputId = "year1", 
+                      label = "Year to Display:",
+                      choices = year_choices,
+                      selected = "ALL")
+        ),
+        mainPanel(
+          plotlyOutput("gas_plot")
+        )
+      )
+    ),
+    #creates our car sales analysis page
+    tabPanel(
+      "Car Sales",
+      sidebarLayout(
+        sidebarPanel(
+          h3("Interactive Control"),
+          selectInput(inputId = "year2", 
+                      label = "Year to Display:",
+                      choices = year_choices,
+                      selected = "ALL")
+        ),
+        mainPanel(
+          plotlyOutput("sales_plot")
+        )
+      )
+    ),
+    
     #creates our summary table page
     tabPanel(
       "Summary Table",
       titlePanel("Our Summarized Data"),
-    ),
-    
-    #creates our car sales analysis page
-    tabPanel(
-      "Car Sales",
-      titlePanel("Car Sales Since 2005")
-    ),
-    
-    #Creates the page with our gas chart visualization
-    tabPanel(
-      "Gas Prices",
-      titlePanel("Gas Prices Since 2005")
+      DT::dataTableOutput("table")
     )
   )
 )
